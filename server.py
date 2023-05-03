@@ -72,10 +72,7 @@ def register():
 
 @app.route('/')
 def index():
-    if not current_user.is_authenticated:
-        return """Привет, ты на сайте 'БД', но ты не залогинен, пожалуйста, залогинся:
-        <a href="login">Войти</a>"""
-    return "ТУТ ничего НЕЕЕЕТ!, покачто..."
+    return render_template("main.html")
 
 
 def main():

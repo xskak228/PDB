@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<a href="logout">Выйти</a>
+
+{% else %}
+<a href="login">Войти</a>
+{% endif%}
+
+
+{% endblock %}
