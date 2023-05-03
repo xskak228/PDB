@@ -10,13 +10,13 @@ body {
 }
 
 .menu {
-    background-color: lightgray;
+    background-color: #001b3b;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    width: 60px;
+    width: 100px;
     min-height: 100%;
     padding-left: 5px;
     padding-right: 4px;
@@ -24,11 +24,26 @@ body {
     padding-bottom: -20px;
 }
 
-.menu a {
+.menu .main_menu a {
     display: flex;
     justify-content: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.menu .back_menu a {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+#main_url {
+    border-bottom: 2px dotted #424b54;
+}
+#moderators_url{
+    border-top: 2px dotted #424b54;
 }
 
 .main_menu, .back_menu {
@@ -42,5 +57,13 @@ body {
 
 a:active, a:hover, a {
     text-decoration: none;
-    color: black;
+    color: white;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
