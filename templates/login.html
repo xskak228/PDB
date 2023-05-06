@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Авторизация</h1>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.Email.label }}<br>
-        {{ form.Email(class="form-control", type="email") }}<br>
-        {% for error in form.Email.errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ error }}
-            </div>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.Key.label }}<br>
-        {{ form.Key(class="form-control") }}<br>
-        {% for error in form.Key.errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ error }}
-            </div>
-        {% endfor %}
-    </p>
-    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-    <div>{{ message }}</div>
-</form>
+<div class="login_form">
+    <h1>Авторизация</h1>
+    <form action="" method="post" id="form_login">
+        {{ form.hidden_tag() }}
+                <p>
+                    {{ form.Email(class="form-control", type="email", id="form_email", placeholder="Эл. почта") }}<br>
+                    {% for error in form.Email.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.Key(class="form-control", id="form_email", placeholder="Ключ") }}<br>
+                    {% for error in form.Key.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </p>
+            <div class="error_message">{{ message }}</div>
+            <div class="form_login_submit"><p>{{ form.submit(type="submit", class="btn btn-primary", id="form_login_submit")}}</p></div>
+    </form>
+</div>
 {% endblock %}
