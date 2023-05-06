@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="content_6x">
+    {% for i in range(elem) %}
+        <div id="content_{{ i + 1 }}", class="content_1x">test {{ i + 1 }}</div>
+    {% endfor %}
+</div>
+<div class="scroll">
+    {% if page >= 3 %}
+        <a href="?page=1" class="scroll_page">1</a>
+        <a href="?page=1" class="scroll_page">...</a>
+    {% endif %}
 
-{% if current_user.is_authenticated %}
-<a href="logout">Выйти</a>
+    {% if page >= 2 %}
+        <a href="?page={{ page - 1 }}" class="scroll_page">{{ page - 1}}</a>
+        <a href="?page={{ page }}" class="scroll_page" id="current_page">{{ page }}</a>
+        {% if max >= page + 1 %}
+            <a href="?page={{ page + 1 }}" class="scroll_page">{{ page + 1 }}</a>
+        {% endif %}
+    {% else %}
+        <a href="?page={{ page }}" class="scroll_page" id="current_page">{{ page }}</a>
+        {% if max >= page + 1 %}
+            <a href="?page={{ page + 1 }}" class="scroll_page">{{ page + 1 }}</a>
+        {% endif %}
+        {% if max >= page + 2 %}
+            <a href="?page={{ page + 2 }}" class="scroll_page">{{ page + 2 }}</a>
+        {% endif %}
+    {% endif%}
 
-{% else %}
-<a href="login">Войти</a>
-{% endif%}
-
-
+    {% if page <= max - 2 %}
+        <a href="?page={{ max }}" class="scroll_page">...</a>
+        <a href="?page={{ max }}" class="scroll_page">{{ max }}</a>
+    {% endif %}
+</div>
 {% endblock %}

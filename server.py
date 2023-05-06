@@ -1,6 +1,6 @@
 import datetime
 
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 
 from data.GenerateKey import GenerateKeys
 from data.Keys import db_session_keys
@@ -67,12 +67,27 @@ def register():
             db_sess.add(user)
             db_sess.commit()
         return render_template("register.html", title='Регистрация ключа', form=form)
-    return """У вас нет такой возможности. <a href="/">Гл. страница</a>"""
+    return redirect("login")
 
 
 @app.route('/')
 def index():
-    return render_template("main.html")
+    if current_user.is_authenticated:
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+            elements = 32
+            max = elements / 6
+            if max > round(max):
+                max = round(max) + 1
+            elem = min(elements - (page - 1) * 6, 6)
+            print(elem)
+            print(elem)
+            if page > max:
+                return redirect("/?page=" + str(max))
+            return render_template("main.html", page=page, max=max, elem=elem)
+        return redirect("/?page=1")
+    else:
+        return redirect("login")
 
 
 def main():
