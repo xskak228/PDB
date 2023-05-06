@@ -80,8 +80,6 @@ def index():
             if max > round(max):
                 max = round(max) + 1
             elem = min(elements - (page - 1) * 6, 6)
-            print(elem)
-            print(elem)
             if page > max:
                 return redirect("/?page=" + str(max))
             return render_template("main.html", page=page, max=max, elem=elem)
