@@ -110,17 +110,13 @@ body {
   float: right;
 }
 
-/* Responsive navigation menu (for mobile devices) */
-@media screen and (max-width: 860px) {
-    .topnav{
-        display: None;
-  }
+.card {
+    background-color: red;
+    height: 500px;
 
-    .dropdown {
-        display: inline-block;
-  }
-
+    padding: 5%
 }
+
 
 
 a:active, a:hover, a {
@@ -212,16 +208,9 @@ a:active, a:hover, a {
 .content_6x {
     width: 80%;
     height: 94%;
-
-
 }
 
-.card {
-    background-color: red;
-    height: 350px;
 
-    padding: 5%
-}
 
 .card .photo {
     background-color: white;
@@ -238,20 +227,13 @@ a:active, a:hover, a {
 .column {
   float: left;
 
-  width: 33.3%;
+  width: 400px;
+  min-width: 230px;
   min-height: 200px;
 
   margin-bottom: 16px;
   padding: 0 8px;
 }
-
-@media screen and (max-width: 640px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-
 
 .scroll{
     margin-top: -100px;
@@ -277,5 +259,35 @@ a:active, a:hover, a {
 
     border-radius: 10px;;
     box-shadow: 3px 3px 3px #8b8b8b;
+
+}
+
+/* Clear floats */
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 860px) {
+
+    .column {
+        width: 230px; !important
+        background-color: blue;
+        min-height: 200px;
+        }
+
+    .card {
+        height: 300px;
+        }
+
+    .topnav{
+        display: None;
+  }
+
+    .dropdown {
+        display: inline-block;
+  }
 
 }
