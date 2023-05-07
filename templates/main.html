@@ -1,44 +1,86 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="../static/css/main_style.css">
 <div class="content_6x">
-    <div class="row">
-            {% for i in range(elem) %}
+    {% if elem <= 3 %}
+        <div class="row">
+            {% for i in users %}
                 <div class="column">
                     <div class="card">
-                        <div class="photo">123</div>
+                        <img src="{{ url_for('static', filename='img/test1.jpg') }}" alt="Щипунов Андрей" style="width:100%">
+                        <div class="container">
+                            <h2>{{i.surname}} {{i.name}} (id:{{ i.id }})</h2>
+                            <p class="title">Возраст: {{i.age}}</p>
+                            <p class="title">Обновлён: Тестовая дата/время</p>
+                            <p class="title">Добавлен: Тестовая дата/время</p>
+                            p><a href="OutBase/MainDataBaseInformation/id{{ i.id }}NoMod/MainInformation" class="button">Перейти</a></p>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
-    </div>
-
+        </div>
+    {% else %}
+        <div class="row">
+            {% for i in users[:3] %}
+                <div class="column">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='img/test1.jpg') }}" alt="Щипунов Андрей" style="width:100%">
+                        <div class="container">
+                            <h2>{{i.surname}} {{i.name}} (id:{{ i.id }})</h2>
+                            <p class="title">Возраст: {{i.age}}</p>
+                            <p class="title">Обновлён: Тестовая дата/время</p>
+                            <p class="title">Добавлен: Тестовая дата/время</p>
+                            <p><a href="OutBase/MainDataBaseInformation/id{{ i.id }}NoMod/MainInformation" class="button">Перейти</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% for i in users[3:] %}
+               <div class="column">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='img/test1.jpg') }}" alt="Щипунов Андрей" style="width:100%">
+                        <div class="container">
+                            <h2>{{i.surname}} {{i.name}} (id:{{ i.id }})</h2>
+                            <p class="title">Возраст: {{i.age}}</p>
+                            <p class="title">Обновлён: Тестовая дата/время</p>
+                            <p class="title">Добавлен: Тестовая дата/время</p>
+                            <p><a href="OutBase/MainDataBaseInformation/id{{ i.id }}NoMod/MainInformation" class="button">Перейти</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
 </div>
 <div class="scroll">
     {% if page >= 3 %}
-        <a href="?page=1" class="scroll_page">1</a>
-        <a href="?page=1" class="scroll_page">...</a>
+        <a href="?p=1" class="scroll_page">1</a>
+        <a href="?p=1" class="scroll_page">...</a>
     {% endif %}
 
     {% if page >= 2 %}
-        <a href="?page={{ page - 1 }}" class="scroll_page">{{ page - 1}}</a>
-        <a href="?page={{ page }}" class="scroll_page" id="current_page">{{ page }}</a>
+        <a href="?p={{ page - 1 }}" class="scroll_page">{{ page - 1}}</a>
+        <a href="?p={{ page }}" class="scroll_page" id="current_page">{{ page }}</a>
         {% if max >= page + 1 %}
-            <a href="?page={{ page + 1 }}" class="scroll_page">{{ page + 1 }}</a>
+            <a href="?p={{ page + 1 }}" class="scroll_page">{{ page + 1 }}</a>
         {% endif %}
     {% else %}
-        <a href="?page={{ page }}" class="scroll_page" id="current_page">{{ page }}</a>
+        <a href="?p={{ page }}" class="scroll_page" id="current_page">{{ page }}</a>
         {% if max >= page + 1 %}
-            <a href="?page={{ page + 1 }}" class="scroll_page">{{ page + 1 }}</a>
+            <a href="?p={{ page + 1 }}" class="scroll_page">{{ page + 1 }}</a>
         {% endif %}
         {% if max >= page + 2 %}
-            <a href="?page={{ page + 2 }}" class="scroll_page">{{ page + 2 }}</a>
+            <a href="?p={{ page + 2 }}" class="scroll_page">{{ page + 2 }}</a>
         {% endif %}
     {% endif%}
 
     {% if page <= max - 2 %}
-        <a href="?page={{ max }}" class="scroll_page">...</a>
-        <a href="?page={{ max }}" class="scroll_page">{{ max }}</a>
+        <a href="?p={{ max }}" class="scroll_page">...</a>
+        <a href="?p={{ max }}" class="scroll_page">{{ max }}</a>
     {% endif %}
 </div>
 {% endblock %}

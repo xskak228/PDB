@@ -73,22 +73,41 @@ def register():
 @app.route('/')
 def index():
     if current_user.is_authenticated:
-        if request.args.get('page'):
-            page = int(request.args.get('page'))
-            elements = 7
+        if request.args.get('p'):
+            page = int(request.args.get('p'))  # Current Page
+
+            # K elements in DB
+            db_sess = db_session_base.create_session()
+            elements = db_sess.query(Main).all()
+            elements = int(len(elements))
+
+            # Max Page
             max = elements / 6
-            if max > round(max):
-                max = round(max) + 1
-            else:
-                max = 1
-            elem = min(elements - (page - 1) * 6, 6)
+            max = round(max) + 1 if max > round(max) else round(max)
+
+            elem = min(elements - (page - 1) * 6, 6)  # Elements in current page
+
+            # Redirect if current page is not available
             if page > max:
-                return redirect("/?page=" + str(max))
-            return render_template("main.html", page=page, max=max, elem=elem)
-        return redirect("/?page=1")
+                return redirect("/?p=" + str(max))
+
+            offset = (page - 1) * 6     # Offset for take id
+
+            db_sess = db_session_base.create_session()
+            user = db_sess.query(Main).filter(Main.id > offset, Main.id <= offset + elem)
+
+            return render_template("main.html", page=page, max=max, elem=elem, users=user)
+        return redirect("/?p=1")
     else:
         return redirect("login")
 
+
+@app.route('/OutBase/MainDataBaseInformation/id<id>NoMod/<InfPage>')
+def DataBase(id, InfPage):
+    if InfPage == "MainInformation":
+        return f"""Вы находитесь на странице '{InfPage}' пользователя с ID: {id}"""
+    else:
+        return f"""Ошибка"""
 
 def main():
     db_session_base.global_init("db/base.db")
