@@ -2,9 +2,17 @@
 
 {% block content %}
 <div class="content_6x">
-    {% for i in range(elem) %}
-        <div id="content_{{ i + 1 }}", class="content_1x">test {{ i + 1 }}</div>
-    {% endfor %}
+    <div class="row">
+            {% for i in range(elem) %}
+                <div class="column">
+                    <div class="card">
+                        <div class="photo">123</div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+
+
 </div>
 <div class="scroll">
     {% if page >= 3 %}

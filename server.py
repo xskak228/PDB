@@ -75,10 +75,12 @@ def index():
     if current_user.is_authenticated:
         if request.args.get('page'):
             page = int(request.args.get('page'))
-            elements = 32
+            elements = 7
             max = elements / 6
             if max > round(max):
                 max = round(max) + 1
+            else:
+                max = 1
             elem = min(elements - (page - 1) * 6, 6)
             if page > max:
                 return redirect("/?page=" + str(max))
