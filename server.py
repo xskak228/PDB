@@ -33,7 +33,7 @@ def login():
         user = db_sess.query(Keys).filter(Keys.email == form.Email.data).first()
         if user and user.check_password(form.Key.data):
             login_user(user)
-            return redirect("/")
+            return redirect("/home")
         return render_template('login.html',
                                message="Неправильная почта или неверный ключ!",
                                form=form)
@@ -44,7 +44,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect("/")
+    return redirect("/home")
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -70,7 +70,7 @@ def register():
     return redirect("login")
 
 
-@app.route('/')
+@app.route('/home')
 def index():
     if current_user.is_authenticated:
         if request.args.get('p'):
@@ -89,7 +89,7 @@ def index():
 
             # Redirect if current page is not available
             if page > max:
-                return redirect("/?p=" + str(max))
+                return redirect("/home?p=" + str(max))
 
             offset = (page - 1) * 6     # Offset for take id
 
@@ -97,9 +97,14 @@ def index():
             user = db_sess.query(Main).filter(Main.id > offset, Main.id <= offset + elem)
 
             return render_template("main.html", page=page, max=max, elem=elem, users=user)
-        return redirect("/?p=1")
+        return redirect("home?p=1")
     else:
         return redirect("login")
+
+
+@app.route('/profile')
+def profile():
+    return render_template("profile.html")
 
 
 @app.route('/OutBase/MainDataBaseInformation/id<id>NoMod/<InfPage>')
@@ -108,6 +113,7 @@ def DataBase(id, InfPage):
         return f"""Вы находитесь на странице '{InfPage}' пользователя с ID: {id}"""
     else:
         return f"""Ошибка"""
+
 
 def main():
     db_session_base.global_init("db/base.db")

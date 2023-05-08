@@ -72,7 +72,7 @@ body {
 .show {display:block;}
 
 .topnav {
-    display: block;
+  display: block;
   position: relative;
   overflow: hidden;
   background-color: #001b3b;
@@ -112,7 +112,7 @@ body {
 
 
 .content {
-    padding-top: 70px;
+    padding-top: 48px;
 
     min-height: 100%;
     width: 100%;

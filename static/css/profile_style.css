@@ -1,0 +1,59 @@
+.topnav, .dropdown {
+    position: fixed;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.headfon {
+    min-height: 30%;
+    width: 100%;
+}
+
+
+
+.profile_content {
+    background-color: white;
+    min-height: 70%;
+    width: 100%;
+}
+
+.server_information {
+    background-color: red;
+    height: 100%;
+    width: 250px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.user_information {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+#Logo_UserInf {display: None}
+
+.logo {
+    height: 150px;
+    margin-top: -75px;
+
+    border: solid 6px white;
+    border-radius: 50%;
+}
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 860px) {
+    .headfon {min-height: 20%;}
+
+    #Logo_UserInf {display: block}
+    .server_information {display: None;}
+
+    .profile_content {min-height: 80%;}
+}
