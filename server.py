@@ -25,6 +25,10 @@ def load_user(user_id):
     return db_sess.query(Keys).get(user_id)
 
 
+@app.route("/")
+def redirecting():
+    return redirect("/home")
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -108,7 +112,7 @@ def profile():
 
 
 @app.route('/OutBase/MainDataBaseInformation/id<id>NoMod/<InfPage>')
-def DataBase(id, InfPage):
+def вataиase(id, InfPage):
     if InfPage == "MainInformation":
         return f"""Вы находитесь на странице '{InfPage}' пользователя с ID: {id}"""
     else:
@@ -121,28 +125,22 @@ def main():
 
     # tes_bd()
 
-    app.run()
+    app.run(port=5051)
 
 
 def tes_bd():
     keys = Keys()
     keys.powerful = 1
     keys.who_appointed = 1
-    keys.surname = "TEST1"
-    keys.name = "TEST2"
-    keys.phone = "1(234) 567 89-10"
-    keys.email = "test@mail.com"
-    keys.set_key("TEST1234")
+    keys.surname = "Похабщинв"
+    keys.name = "Ослов99"
+    keys.phone = "1(234)567-89-10"
+    keys.email = "Pohabshina@oslov.com"
+    keys.set_key("1234567890")
     db_sess_1 = db_session_keys.create_session()
 
-    base = Main()
-    base.key = "wWdaDA2D2daWA2809p"
-    db_sess_2 = db_session_base.create_session()
-
     db_sess_1.add(keys)
-    db_sess_2.add(base)
     db_sess_1.commit()
-    db_sess_2.commit()
 
 
 if __name__ == '__main__':

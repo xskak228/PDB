@@ -5,10 +5,22 @@
     <div class="headfon"></div>
     <div class="profile_content">
         <div class="server_information">
-            <img class="logo" id="Logo_ServInf" src="{{ url_for('static', filename='img/test3.jpg') }}" alt="ФП">
+            <div class="logoimg"><img class="logo" id="Logo_ServInf" src="{{ url_for('static', filename='img/test3.jpg') }}" alt="ФП"></div>
+            <div class="con" id="con_serv">
+                <h3>ID: {{ current_user.id }}</h3>
+                <h3>Добавлен:<br> {{ current_user.created_date }}</h3>
+                <h3>Добавляющий: {{ current_user.who_appointed }}</h3>
+                <h3>Доступ до:<br> {{ current_user.finished_date }}</h3>
+                <h3>Уровень: {{ current_user.powerful }}</h3>
+
+            </div>
         </div>
         <div class="user_information">
-            <img class="logo" id="Logo_UserInf" src="{{ url_for('static', filename='img/test3.jpg') }}" alt="ФП">
+            <div class="logoimg"><img class="logo" id="Logo_UserInf" src="{{ url_for('static', filename='img/test3.jpg') }}" alt="ФП"></div>
+            <div class="con" id="con_user">
+                <h1>{{ current_user.surname }} {{ current_user.name }}</h1>
+                <h2>{{ current_user.phone }} {{ current_user.email }}</h2>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -11,49 +11,74 @@
 }
 
 .headfon {
+    background-image: url("../img/fone.jpg");
     min-height: 30%;
     width: 100%;
 }
-
-
 
 .profile_content {
     background-color: white;
     min-height: 70%;
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
 }
 
 .server_information {
-    background-color: red;
+    background-color: lightgray;
+    border-top: solid 5px white;
     height: 100%;
-    width: 250px;
+    width: 300px;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .user_information {
     width: 100%;
+    height: 100%;
+    background-color: white;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 #Logo_UserInf {display: None}
-
+#Logo_ServInf {display: block}
 .logo {
     height: 150px;
+    width: 150px;
     margin-top: -75px;
 
     border: solid 6px white;
     border-radius: 50%;
 }
+
+.logoimg, .con{
+    display: flex;
+    justify-content: center;
+}
+
+#con_serv {
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#con_user {
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* Responsive navigation menu (for mobile devices) */
 @media screen and (max-width: 860px) {
-    .headfon {min-height: 20%;}
+    .headfon {min-height: 25%;}
 
     #Logo_UserInf {display: block}
     .server_information {display: None;}
 
-    .profile_content {min-height: 80%;}
+    .profile_content {min-height: 75%;}
+
 }
