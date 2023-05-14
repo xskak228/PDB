@@ -29,6 +29,7 @@ def load_user(user_id):
 def redirecting():
     return redirect("/home")
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
